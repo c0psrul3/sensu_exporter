@@ -23,6 +23,14 @@ var (
 		"api", "http://localhost:4567",
 		"Address to Sensu API.",
 	)
+	sensuUSER = flag.String(
+		"user", "admin",
+		"Username to Sensu API.",
+	)
+	sensuPASS = flag.String(
+		"pass", "password",
+		"Password to Sensu API.",
+	)
 )
 
 type SensuCheckResult struct {
@@ -40,6 +48,11 @@ type SensuCheck struct {
 	Issued      int64
 	Interval    int
 }
+
+//func basicAuth(username, password string) string {
+//	auth := username + ":" + password
+//	return base64.StdEncoding.EncodeToString([]byte(auth))
+//}
 
 // BEGIN: Class SensuCollector
 type SensuCollector struct {
